@@ -32,4 +32,5 @@ public interface ReadDao {
 	public <T, E> Map<T, E> selectMap(String sqlId, long parameter, String mapKey);
 	
 	public <T, E> Map<T, E> selectMap(String sqlId, String parameter, String mapKey);
+	
 }
