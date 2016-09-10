@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tyhj.travel.entity.Account">
+<mapper namespace="com.tyhj.travel.entity">
 	<resultMap id="AccountResultMap" type="com.tyhj.travel.entity.Account">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="account_name" property="accountName" jdbcType="VARCHAR" />
@@ -36,7 +36,7 @@
 		)
 	</insert>
 
-	<select id="account_read" parameterType="map" resultMap="accountResultMap">
+	<select id="account_read" parameterType="map" resultMap="AccountResultMap">
 		select * from tb_account
 		<include refid="accountFindCriteria" />
 		limit 1;
@@ -47,7 +47,7 @@
 		<include refid="accountFindCriteria" />
 	</select>
 
-	<select id="account_page" parameterType="map" resultMap="accountResultMap">
+	<select id="account_page" parameterType="map" resultMap="AccountResultMap">
 		select * from tb_account
 		<include refid="accountFindCriteria" />
 		<include refid="Public.OrderCriteria" />
@@ -70,21 +70,21 @@
 			<if test="queryId != null">
 				and id = #{queryId,jdbcType=VARCHAR}
 			</if>
-			<if test="queryaccountPhone != null">
-				and account_phone = #{queryaccountPhone,jdbcType=VARCHAR}
+			<if test="queryAccountPhone != null">
+				and account_phone = #{queryAccountPhone,jdbcType=VARCHAR}
 			</if>
-			<if test="queryaccountName != null">
-				and account_name = #{queryaccountName,jdbcType=VARCHAR}
+			<if test="queryAccountName != null">
+				and account_name = #{queryAccountName,jdbcType=VARCHAR}
 			</if>
-			<if test="queryaccountPass != null">
-				and account_pass = #{queryaccountPass,jdbcType=VARCHAR}
+			<if test="queryAccountPass != null">
+				and account_pass = #{queryAccountPass,jdbcType=VARCHAR}
 			</if>
 			
-			<if test="queryaccountPhoneLike != null">
-				and account_phone like #{queryaccountPhoneLike,jdbcType=VARCHAR}
+			<if test="queryAccountPhoneLike != null">
+				and account_phone like #{queryAccountPhoneLike,jdbcType=VARCHAR}
 			</if>
-			<if test="queryaccountNameLike != null">
-				and account_name like #{queryaccountNameLike,jdbcType=VARCHAR}
+			<if test="queryAccountNameLike != null">
+				and account_name like #{queryAccountNameLike,jdbcType=VARCHAR}
 			</if>
 		</where>
 	</sql>

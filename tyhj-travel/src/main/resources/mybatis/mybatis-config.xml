@@ -39,7 +39,7 @@
 		<!-- 公共的配置, 包含分页和排序 -->
 		<mapper resource="mybatis/mybatis_public.xml" />
 
-		<mapper resource="mybatis/mapper/User.Mapper.xml" />
+		<mapper resource="mybatis/mapper/UserMapper.xml" />
 		
 	</mappers>
 

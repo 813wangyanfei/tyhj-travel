@@ -19,34 +19,34 @@ public class AccountDao {
 	private WriteDao writeDao;
 	
 	public long create(Account appointment) {
-		return writeDao.create(Account.class, "Account_create", appointment);
+		return writeDao.create(Account.class, "account_create", appointment);
 	}
 
 	public long totalCount(SqlParameter parameter) {
-		return readDao.count(Account.class, "Account_count", parameter);
+		return readDao.count(Account.class, "account_count", parameter);
 	}
 
 	public Collection<Account> page(SqlParameter parameter) {
-		return readDao.select(Account.class, "Account_page", parameter);
+		return readDao.select(Account.class, "account_page", parameter);
 	}
 
 	public Account read(SqlParameter parameter) {
-		return readDao.read(Account.class, "Account_read", parameter);
+		return readDao.read(Account.class, "account_read", parameter);
 	}
 
 	public int delete(SqlParameter parameter) {
-		return writeDao.delete(Account.class, "Account_delete", parameter);
+		return writeDao.delete(Account.class, "account_delete", parameter);
 	}
 
 	public int update(SqlParameter parameter) {
-		return writeDao.update(Account.class, "Account_update", parameter);
+		return writeDao.update(Account.class, "account_update", parameter);
 	}
 	
 	public int updatePwd(SqlParameter parameter) {
-		return writeDao.update(Account.class, "Account_updatePwd", parameter);
+		return writeDao.update(Account.class, "account_updatePwd", parameter);
 	}
-	public int Account_updatePhone(SqlParameter parameter) {
-		return writeDao.update(Account.class, "Account_updatePhone", parameter);
+	public int account_updatePhone(SqlParameter parameter) {
+		return writeDao.update(Account.class, "account_updatePhone", parameter);
 	}
 	
 	

@@ -18,11 +18,12 @@ import com.tyhj.travel.entity.Account;
 import com.tyhj.travel.service.AccountService;
 
 /**
- * @author wangyanfei
  * 
+ * @author wyf
+ *
  */
 @Controller
-@RequestMapping("/Account")
+@RequestMapping("/account")
 public class AccountController {
 	
 	@Resource
@@ -55,8 +56,14 @@ public class AccountController {
 	}
 
 	/**
-	 * 
-	 * 
+	 * 执行登录功能
+	 * @author wyf
+	 * @serialData 20160910
+	 * @param Account 账号实体
+	 * @param session
+	 * @param request
+	 * @param code
+	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/doLogin")
@@ -70,18 +77,20 @@ public class AccountController {
 		SqlParameter parameter = SqlParameter.getSqlParameter();
 		parameter.addQuery("AccountName", Account.getAccountName());
 		parameter.addQuery("AccountPass", Account.getAccountPwd());
-		Account nAccount = AccountService.read(Account.class, "Account_read", parameter);
+		Account nAccount = AccountService.read(Account.class, "account_read", parameter);
 		if (nAccount == null) {
 			request.setAttribute("info", "用户名或密码错误");
-			return "login";
+			return "login/login";
 		}
 		System.out.println(Account.toString());
 		session.setAttribute("admin", Account);
-		return "main";
+		return "welcom/index";
 	}
 	
 	/**
-	 * 添加用户
+	 * 添加账号功能
+	 * @author wyf
+	 * @serialData 20160910
 	 * @param Account
 	 * @param session
 	 * @param request
@@ -101,7 +110,8 @@ public class AccountController {
 	}
 	
 	/**
-	 * 跳转到添加用户页�?
+	 * 跳转到添加用户页
+	 * @author wyf
 	 * @param Account
 	 * @param session
 	 * @param request
@@ -117,17 +127,6 @@ public class AccountController {
 		return "add";
 	}
 
-//	/**
-//	 * 管理员列
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping("/adminList")
-//	public String adminList(Model model) {
-//		List<Account> admins = AccountService.findAccountAll();
-//		model.addAttribute("admins", admins);
-//		return "admin/listAccount";
-//	}
 
 	/**
 	 * 管理员更
