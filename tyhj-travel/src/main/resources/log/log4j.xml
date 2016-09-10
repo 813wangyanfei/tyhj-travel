@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<appender name="infoLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="D:/tyhj-travel/info.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d {&quot;date&quot;:&quot;%d{ISO8601}&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;className&quot;:&quot;%m&quot;}%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="INFO" />
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+
+	<appender name="warnLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="D:/tyhj-travel/warn.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d {&quot;date&quot;:&quot;%d{ISO8601}&quot;,&quot;level&quot;:&quot;WARN&quot;,&quot;msg&quot;:&quot;%l/n%m&quot;}%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="WARN" />
+			<param name="LevelMin" value="WARN" />
+		</filter>
+	</appender>
+
+	<appender name="errorLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="D:/tyhj-travel/error.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d {&quot;date&quot;:&quot;%d{ISO8601}&quot;,&quot;level&quot;:&quot;ERROR&quot;,&quot;msg&quot;:&quot;%l/n%m&quot;}%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="ERROR" />
+			<param name="LevelMin" value="ERROR" />
+		</filter>
+	</appender>
+
+	<!-- 记录该包下所有日志 -->
+	<logger name="com.tyhj.travel">
+		<level value="ALL" />
+		<appender-ref ref="infoLog" />
+		<appender-ref ref="warnLog" />
+		<appender-ref ref="errorLog" />
+	</logger>
+	<root>
+		<level value="debug" />
+		<appender-ref ref="warnLog" />
+		<appender-ref ref="errorLog" />
+	</root>
+</log4j:configuration>

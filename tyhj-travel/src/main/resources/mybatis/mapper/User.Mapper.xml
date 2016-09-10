@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyhj.travel.entity.Account">
+	<resultMap id="AccountResultMap" type="com.tyhj.travel.entity.Account">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="account_name" property="accountName" jdbcType="VARCHAR" />
+		<result column="account_pass" property="accountPwd" jdbcType="VARCHAR" />
+		<result column="account_phone" property="accountPhone" jdbcType="VARCHAR" />
+		<result column="account_email" property="accountEmail" jdbcType="VARCHAR" />
+		<result column="account_uuid" property="accountUuid" jdbcType="VARCHAR" />
+		<result column="role_id" property="roleId" jdbcType="VARCHAR" />
+		<result column="account_type" property="accountType" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="account_create" parameterType="com.tyhj.travel.entity.Account">
+		<selectKey resultType="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into tb_account (
+		account_name,
+		account_pass,
+		account_phone,
+		account_email,
+		account_uuid,
+		role_id,
+		account_type
+		)
+		values (
+		#{accountName,jdbcType=VARCHAR},
+		#{accountPwd,jdbcType=VARCHAR},
+		#{accountPhone,jdbcType=VARCHAR},
+		#{accountEmail,jdbcType=VARCHAR},
+		#{accountUuid,jdbcType=VARCHAR},
+		#{roleId,jdbcType=VARCHAR},
+		#{accountType,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<select id="account_read" parameterType="map" resultMap="accountResultMap">
+		select * from tb_account
+		<include refid="accountFindCriteria" />
+		limit 1;
+	</select>
+
+	<select id="account_count" parameterType="map" resultType="long">
+		select count(*) from tb_account
+		<include refid="accountFindCriteria" />
+	</select>
+
+	<select id="account_page" parameterType="map" resultMap="accountResultMap">
+		select * from tb_account
+		<include refid="accountFindCriteria" />
+		<include refid="Public.OrderCriteria" />
+		<include refid="Public.PageCriteria" />
+	</select>
+
+	<delete id="account_delete" parameterType="map">
+		delete from tb_account
+		<include refid="accountFindCriteria" />
+	</delete>
+
+	<update id="account_update" parameterType="map">
+		update tb_account
+		<include refid="accountUpdateCriteria" />
+		<include refid="accountFindCriteria" />
+	</update>
+
+	<sql id="accountFindCriteria">
+		<where>
+			<if test="queryId != null">
+				and id = #{queryId,jdbcType=VARCHAR}
+			</if>
+			<if test="queryaccountPhone != null">
+				and account_phone = #{queryaccountPhone,jdbcType=VARCHAR}
+			</if>
+			<if test="queryaccountName != null">
+				and account_name = #{queryaccountName,jdbcType=VARCHAR}
+			</if>
+			<if test="queryaccountPass != null">
+				and account_pass = #{queryaccountPass,jdbcType=VARCHAR}
+			</if>
+			
+			<if test="queryaccountPhoneLike != null">
+				and account_phone like #{queryaccountPhoneLike,jdbcType=VARCHAR}
+			</if>
+			<if test="queryaccountNameLike != null">
+				and account_name like #{queryaccountNameLike,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+
+	<sql id="accountUpdateCriteria">
+		<set>
+	        <if test="updateaccountName != null">
+				 account_name = #{updateaccountName,jdbcType=VARCHAR},
+			</if>
+			<if test="updateaccountPhone != null">
+				 account_phone = #{updateaccountPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="updateaccountPass != null">
+				 account_pass = #{updateaccountPass,jdbcType=VARCHAR},
+			</if>
+			<if test="updateaccountEmail != null">
+				 account_email = #{updateaccountEmail,jdbcType=VARCHAR},
+			</if>
+			
+		</set>
+	</sql>
+</mapper>
