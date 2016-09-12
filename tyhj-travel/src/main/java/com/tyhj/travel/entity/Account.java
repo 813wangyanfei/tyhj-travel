@@ -11,7 +11,7 @@ public class Account extends Entity {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8739621636790054779L;
+	private static final long serialVersionUID = 1L;
 	
 	private String accountName;
 	private String accountPwd;
@@ -28,12 +28,13 @@ public class Account extends Entity {
 	// Constructors
 
 	
-	public String getRoleId() {
-		return roleId;
-	}
-
+	
 	public String getAccountName() {
 		return accountName;
+	}
+
+	public String getRoleId() {
+		return roleId;
 	}
 
 	public void setAccountName(String accountName) {

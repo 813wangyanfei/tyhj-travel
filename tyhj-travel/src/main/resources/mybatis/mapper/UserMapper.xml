@@ -79,13 +79,6 @@
 			<if test="queryAccountPass != null">
 				and account_pass = #{queryAccountPass,jdbcType=VARCHAR}
 			</if>
-			
-			<if test="queryAccountPhoneLike != null">
-				and account_phone like #{queryAccountPhoneLike,jdbcType=VARCHAR}
-			</if>
-			<if test="queryAccountNameLike != null">
-				and account_name like #{queryAccountNameLike,jdbcType=VARCHAR}
-			</if>
 		</where>
 	</sql>
 
