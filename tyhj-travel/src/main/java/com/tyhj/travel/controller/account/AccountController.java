@@ -170,29 +170,5 @@ public class AccountController {
 		return "admin/addAccount";
 	}
 
-	/**
-	 * 管理员删
-	 * 
-	 * @return
-	 */
-//	@RequestMapping("/admin/delAccount")
-//	public String delAccount(
-//			@ModelAttribute Account Account,
-//			@RequestParam(value = "updateId", required = false, defaultValue = "0") int updateId,
-//			Model model) {
-//
-//		if (updateId != 0) {
-//			Account Account2 = AccountService.findAccount(updateId);
-//			if (Account2 != null && Account2.getId() != 1) {
-//				AccountService.deleteAccount(Account2);
-//				model.addAttribute("info", "");
-//			} else {
-//				model.addAttribute("info", "");
-//			}
-//		} else {
-//			model.addAttribute("info", "操作失败");
-//		}
-//		return adminList(model);
-//	}
 
 }
