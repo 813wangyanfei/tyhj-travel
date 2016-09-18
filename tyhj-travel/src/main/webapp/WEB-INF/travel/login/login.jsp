@@ -12,10 +12,9 @@
 <meta name="keywords" content="旅游" />
 <meta name="description" content="旅游" />
 <meta charset="utf-8">
-<link href="${basePath}resources/css/home.css?v=2" rel="stylesheet"
-	type="text/css" />
-<script type="text/javascript"
-	src="${basePath}resources/js/jquery-1.7.2.js"></script>
+<link href="${basePath}resources/css/home.css?v=2" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${basePath}resources/js/jquery/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="${basePath}resources/js/account/account.js"></script>
 </head>
 <body>
 	<div class="wrap">
@@ -43,7 +42,6 @@
 				class="right">右</a>
 		</div>
 		<script type="text/javascript">
-			;
 			(function() {
 
 				var defaultInd = 0;
@@ -120,26 +118,22 @@
 				<div class="reg-form" id="js-form-mobile">
 					<br> <br>
 					<div class="cell">
-						<label for="js-mobile_ipt">填写手机号</label> <input type="text"
-							name="mobile" id="js-mobile_ipt" class="text" maxlength="11" />
+						<!-- <label for="js-mobile_ipt">手机/邮箱/用户名</label> --> <input type="text"
+							name="mobile" id="accountName" class="text" maxlength="11" placeholder="手机/邮箱/用户名"/>
 					</div>
 					<div class="cell">
-						<label for="js-mobile_pwd_ipt">设置密码</label> <input type="password"
-							name="passwd" id="js-mobile_pwd_ipt" class="text" /> <input
-							type="text" name="passwd" id="js-mobile_pwd_ipt_txt" class="text"
-							maxlength="20" style="display: none;" /> <b
-							class="icon-form ifm-view js-view-pwd" title="查看密码"
-							style="display: none"> 查看密码</b>
+						<!-- <label for="js-mobile_pwd_ipt">密码</label> --> <input type="password"
+							name="passwd" id="accountPass" class="text" placeholder="密码"/>
 					</div>
 					<!-- !短信验证码 -->
-					<div class="cell vcode">
+					<!-- <div class="cell vcode">
 						<label for="js-mobile_vcode_ipt">输入验证码</label> <input type="text"
 							name="code" id="js-mobile_vcode_ipt" class="text" maxlength="6" />
 						<a href="javascript:;" id="js-get_mobile_vcode"
 							class="button btn-disabled"> 免费获取验证码</a>
-					</div>
+					</div> -->
 					<div class="bottom">
-						<a id="js-mobile_btn" href="javascript:;" class="button btn-green">
+						<a id="js-mobile_btn" href="javascript:login();" class="button btn-green">
 							立即登录</a>
 					</div>
 				</div>
